@@ -1,5 +1,9 @@
 # dependencies
 /node_modules
 
+# build
+/www/build
+/www/index.html
+
 # misc
 .idea
