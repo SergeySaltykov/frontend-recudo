@@ -10,8 +10,10 @@ const paths = {
 const plugins = [
     new HtmlWebPackPlugin({
         alwaysWriteToDisk: true, // генерация записи на диск для локального запуска
-        template: path.resolve(paths.src, 'index.html'),
-        filename: path.resolve(paths.www, './index.html'),
+        inject: true, // все скрипты буду грузиться после body
+        hash: true, // добавляет в конце файла хеш чтобы не кешировались стили
+        template: path.resolve(paths.src, 'index.html'), // путь к шаблону
+        filename: path.resolve(paths.www, './index.html'), // путь к файлу
     }),
     new HtmlWebpackHarddiskPlugin(),  // плагин позволяет убрать пути по умолчанию
 ];
