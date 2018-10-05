@@ -11,7 +11,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,              // определяем тип файлов
+                test: /\.(js|jsx)$/,              // определяем тип файлов
                 exclude: /node_modules/,    // исключаем из обработки папку node_modules
                 use: {
                     loader: "babel-loader"  // определяем загрузчик
@@ -22,6 +22,9 @@ module.exports = {
                 use: ["style-loader", "css-loader"]
             }
         ]
+    },
+    resolve: {
+        extensions: ['.js', '.jsx'], // определяем расширение файла (значения по умолчанию webpack ['.wasm', '.mjs', '.js', '.json'])
     },
     plugins: plugins,
 };
