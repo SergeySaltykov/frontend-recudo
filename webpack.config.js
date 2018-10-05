@@ -1,11 +1,16 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const path = require('path');
 const paths = {
     build: path.resolve(__dirname, './www/build'),
     src: path.resolve(__dirname, './assetsSource'),
     www: path.resolve(__dirname, './www'),
 };
+const defaultPort = 8000;
+const env = process.env.NODE_ENV || 'development';
+const isProd = 'production' === env;
 
 const plugins = [
     new HtmlWebPackPlugin({
@@ -22,6 +27,9 @@ module.exports = {
     context: paths.src,
     devServer: {
         contentBase: paths.www,
+        historyApiFallback: true, // fallBack for API
+        inline: true,
+        port: defaultPort,
     },
     entry: {
         app: './app/index',
@@ -37,7 +45,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ["style-loader", "css-loader"]
+                use: ["style-loader", "css-loader"] // порядок добавление загрузчиков важен
             }
         ]
     },
