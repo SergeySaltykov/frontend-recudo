@@ -16,7 +16,7 @@ const cleanOptions  = {
     dry: true,
 };
 
-//шрифты, картинки, отчиста пересборки билдов, коммон чанк
+//шрифты, картинки, отчиста пересборки билдов, коммон чанк, source map
 
 const plugins = [
     new HtmlWebPackPlugin({
