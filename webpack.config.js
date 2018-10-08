@@ -1,8 +1,9 @@
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 const paths = {
     build: path.resolve(__dirname, './www/build'),
@@ -11,6 +12,11 @@ const paths = {
 };
 const defaultPort = 8000;
 const isProd = 'production' === process.env.NODE_ENV;
+const cleanOptions  = {
+    dry: true,
+};
+
+//шрифты, картинки, отчиста пересборки билдов, коммон чанк
 
 const plugins = [
     new HtmlWebPackPlugin({
@@ -26,6 +32,11 @@ const plugins = [
         chunkFilename: isProd ? '[id].min.css' : '[id].css',
     }),
 ];
+
+if (isProd) {
+    plugins.unshift(
+        new CleanWebpackPlugin(paths.build, cleanOptions));
+}
 
 /*минимизация сss и js*/
 const minimizer = [
