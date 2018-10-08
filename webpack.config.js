@@ -30,18 +30,19 @@ const plugins = [
 /*минимизация сss и js*/
 const minimizer = [
     new UglifyJsPlugin({
-        // не собирает билды
-        // compress: {
-        //     typeofs: false,
-        //     unsafe_Function: true,
-        //     unsafe_comps: true,
-        //     unsafe_math: true,
-        //     unsafe_proto: true,
-        // },
-        // output: {
-        //     ascii_only: true,
-        //     comments: true,
-        // },
+        uglifyOptions: {
+            compress: {
+                typeofs: false,
+                unsafe_Function: true,
+                unsafe_comps: true,
+                unsafe_math: true,
+                unsafe_proto: true,
+            },
+            output: {
+                ascii_only: true,
+                comments: true,
+            },
+        },
         cache: true,
         parallel: true,
         sourceMap: true,

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import './style.css'
+import './styles.less'
 
 const Index = () => {
     return <div>Hello React!</div>;
