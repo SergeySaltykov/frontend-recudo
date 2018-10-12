@@ -13,7 +13,8 @@ const paths = {
 const defaultPort = 8000;
 const isProd = 'production' === process.env.NODE_ENV;
 const cleanOptions  = {
-    dry: true,
+    dry: false,
+    verbose: true,
 };
 
 //шрифты, картинки, отчиста пересборки билдов, коммон чанк, source map
@@ -35,7 +36,7 @@ const plugins = [
 
 if (isProd) {
     plugins.unshift(
-        new CleanWebpackPlugin(paths.build, cleanOptions));
+        new CleanWebpackPlugin(paths.build, cleanOptions)); //порядок важен, сначала идет отчистка билдов
 }
 
 /*минимизация сss и js*/
