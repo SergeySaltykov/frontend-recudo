@@ -17,7 +17,7 @@ const cleanOptions = {
     verbose: true,
 };
 
-//коммон чанк, source map, fallback: 'style-loader' запасной вариант, шрифты, картинки(не добавляется в билды при сборке отдельными папками).
+//коммон чанк, source map, шрифты, картинки(не добавляется в билды при сборке отдельными папками).
 
 const plugins = [
     new HtmlWebPackPlugin({
