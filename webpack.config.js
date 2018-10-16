@@ -12,12 +12,12 @@ const paths = {
 };
 const defaultPort = 8000;
 const isProd = 'production' === process.env.NODE_ENV;
-const cleanOptions  = {
+const cleanOptions = {
     dry: false,
     verbose: true,
 };
 
-//шрифты, картинки, отчиста пересборки билдов, коммон чанк, source map
+//коммон чанк, source map, fallback: 'style-loader' запасной вариант, шрифты, картинки(не добавляется в билды при сборке отдельными папками).
 
 const plugins = [
     new HtmlWebPackPlugin({
@@ -96,6 +96,21 @@ module.exports = {
                     MiniCssExtractPlugin.loader,
                     'css-loader'
                 ],
+            },
+            {
+                test: /.*\.(jpe?g|png|gif|svg)$/i,
+                loader: 'url-loader',
+                options: {
+                    limit: 5000,
+                    name: 'img/[hash:8].[ext]?[hash:4]',
+                },
+            },
+            {
+                test: /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+                loader: 'file-loader',
+                options: {
+                    name: 'fonts/[hash:8].[ext]?[hash:4]',
+                },
             },
         ]
     },
