@@ -4,6 +4,7 @@ const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const webpack = require('webpack');
 const path = require('path');
 const paths = {
     build: path.resolve(__dirname, './www/build'),
@@ -24,7 +25,7 @@ const plugins = [
         alwaysWriteToDisk: true, // генерация записи на диск для локального запуска
         inject: true, // все скрипты будут грузиться после body
         hash: true, // добавляет в конце файла хеш чтобы не кешировались стили
-        template: path.resolve(paths.src, 'index.html'), // путь к шаблону
+        template: path.resolve(paths.src, './index.html'), // путь к шаблону
         filename: path.resolve(paths.www, './index.html'), // путь к файлу
     }),
     new HtmlWebpackHarddiskPlugin(),  // плагин позволяет убрать пути по умолчанию
@@ -37,6 +38,9 @@ const plugins = [
 if (isProd) {
     plugins.unshift(
         new CleanWebpackPlugin(paths.build, cleanOptions)); //порядок важен, сначала идет отчистка билдов
+    plugins.push(
+        new webpack.NoEmitOnErrorsPlugin() // если есть какие то ошибки, то билд не соберется
+    );
 }
 
 /*минимизация сss и js*/
@@ -99,7 +103,7 @@ module.exports = {
             },
             {
                 test: /.*\.(jpe?g|png|gif|svg)$/i,
-                loader: 'url-loader',
+                loader: 'file-loader',
                 options: {
                     limit: 5000,
                     name: 'img/[hash:8].[ext]?[hash:4]',
