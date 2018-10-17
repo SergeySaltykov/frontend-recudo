@@ -18,7 +18,7 @@ const cleanOptions = {
     verbose: true,
 };
 
-//optimization.splitChunks , source map, шрифты, картинки(не добавляется в билды при сборке отдельными папками).
+//optimization.splitChunks , source map, stats - вывод информации при сборке в консоль. полезно для отображения ошибок.
 
 const plugins = [
     new HtmlWebPackPlugin({
