@@ -11,6 +11,10 @@ const paths = {
     src: path.resolve(__dirname, './assetsSource'),
     www: path.resolve(__dirname, './www'),
 };
+// вывод информации при сборке в консоль. полезно для отображения ошибок
+const stats = {
+    colors: true,
+};
 const defaultPort = 8000;
 const isProd = 'production' === process.env.NODE_ENV;
 const cleanOptions = {
@@ -18,7 +22,7 @@ const cleanOptions = {
     verbose: true,
 };
 
-//optimization.splitChunks , source map, stats - вывод информации при сборке в консоль. полезно для отображения ошибок.
+//optimization.splitChunks , source map.
 
 const plugins = [
     new HtmlWebPackPlugin({
@@ -73,6 +77,7 @@ module.exports = {
         historyApiFallback: true, // fallBack for API
         inline: true,
         port: defaultPort,
+        stats,
     },
     entry: {
         app: './app/index',
@@ -134,4 +139,5 @@ module.exports = {
         ],
     },
     plugins: plugins,
+    stats,
 };
