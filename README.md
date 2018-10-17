@@ -1,6 +1,6 @@
 # frontend-recudo
 
-Запуск локального сервера [http://localhost:8001](http://localhost:8001)
+Запуск локального сервера [http://localhost:8000](http://localhost:8001)
 ```sh
 npm start
 ```
