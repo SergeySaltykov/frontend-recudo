@@ -13,3 +13,5 @@ npm run build
 Автоматическая компиляция изображений при сборке билда
 пример : import img from '../../www/content/img/test.jpg';
 
+Подключить eslint   
+

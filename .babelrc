@@ -1,3 +1,9 @@
 {
-    "presets": ["env", "react"]
+    "presets": [
+        [
+            "env", { "modules": false } // преобразование ES6 в другой тип модуля
+        ],
+        "stage-2",
+        "react"
+    ]
 }

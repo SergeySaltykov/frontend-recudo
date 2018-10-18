@@ -22,8 +22,6 @@ const cleanOptions = {
     verbose: true,
 };
 
-// source map.
-
 const plugins = [
     new HtmlWebPackPlugin({
         alwaysWriteToDisk: true, // генерация записи на диск для локального запуска
