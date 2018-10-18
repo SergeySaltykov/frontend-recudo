@@ -4,7 +4,6 @@ const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const webpack = require('webpack');
 const path = require('path');
 const paths = {
     build: path.resolve(__dirname, './www/build'),
@@ -14,6 +13,7 @@ const paths = {
 // вывод информации при сборке в консоль. полезно для отображения ошибок
 const stats = {
     colors: true,
+    errorDetails: true,
 };
 const defaultPort = 8000;
 const isProd = 'production' === process.env.NODE_ENV;
@@ -22,7 +22,7 @@ const cleanOptions = {
     verbose: true,
 };
 
-//optimization.splitChunks , source map.
+// source map.
 
 const plugins = [
     new HtmlWebPackPlugin({
@@ -42,9 +42,6 @@ const plugins = [
 if (isProd) {
     plugins.unshift(
         new CleanWebpackPlugin(paths.build, cleanOptions)); //порядок важен, сначала идет отчистка билдов
-    plugins.push(
-        new webpack.NoEmitOnErrorsPlugin() // если есть какие то ошибки, то билд не соберется
-    );
 }
 
 /*минимизация сss и js*/
@@ -53,10 +50,15 @@ const minimizer = [
         uglifyOptions: {
             compress: {
                 typeofs: false,
-                unsafe_Function: true,
-                unsafe_comps: true,
-                unsafe_math: true,
-                unsafe_proto: true,
+                comparisons: true,
+                conditionals: true,
+                dead_code: true,
+                evaluate: true,
+                if_return: true,
+                join_vars: true,
+                sequences: true,
+                unused: true,
+                warnings: false,
             },
             output: {
                 ascii_only: true,
@@ -81,6 +83,11 @@ module.exports = {
     },
     entry: {
         app: './app/index',
+        vendors: [
+            'babel-polyfill',
+            'react',
+            'react-dom',
+        ],
     },
     module: {
         rules: [
@@ -124,10 +131,14 @@ module.exports = {
         ]
     },
     optimization: {
-        minimizer: minimizer,
+        minimizer: minimizer, // по дефолту включен в прод режиме
+        splitChunks: {
+            automaticNameDelimiter: '-',
+        }
     },
     output: {
         filename: '[name].min.js',
+        chunkFilename: '[name].min.js',
         path: paths.build,
         publicPath: '/build/',
     },
