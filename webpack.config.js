@@ -85,6 +85,7 @@ module.exports = {
             'babel-polyfill',
             'react',
             'react-dom',
+            'whatwg-fetch',
         ],
     },
     module: {
