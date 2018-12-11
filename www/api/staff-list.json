@@ -1,0 +1,74 @@
+[
+  {
+    "status": "invited",
+    "email": "tammie.ortega@interfind.info",
+    "lastName": "Ortega",
+    "firstName": "Tammie",
+    "locale": "ru",
+    "_id": 1
+  },
+  {
+    "status": "active",
+    "email": "whitfield.lancaster@unisure.net",
+    "lastName": "Lancaster",
+    "firstName": "Whitfield",
+    "locale": "en",
+    "_id": 2
+  },
+  {
+    "status": "active",
+    "email": "deleon.mann@yurture.us",
+    "lastName": "Mann",
+    "firstName": "Deleon",
+    "locale": "ru",
+    "_id": 3
+  },
+  {
+    "status": "active",
+    "email": "dean.phelps@skyplex.tv",
+    "lastName": "Phelps",
+    "firstName": "Dean",
+    "locale": "en",
+    "_id": 4
+  },
+  {
+    "status": "blocked",
+    "email": "sally.fowler@fibrodyne.biz",
+    "lastName": "Fowler",
+    "firstName": "Sally",
+    "locale": "ru",
+    "_id": 5
+  },
+  {
+    "status": "active",
+    "email": "mandy.baker@neptide.com",
+    "lastName": "Baker",
+    "firstName": "Mandy",
+    "locale": "en",
+    "_id": 6
+  },
+  {
+    "status": "invited",
+    "email": "mccormick.beard@centrexin.biz",
+    "lastName": "Beard",
+    "firstName": "Mccormick",
+    "locale": "ru",
+    "_id": 7
+  },
+  {
+    "status": "active",
+    "email": "frieda.macdonald@nitracyr.ca",
+    "lastName": "Macdonald",
+    "firstName": "Frieda",
+    "locale": "en",
+    "_id": 8
+  },
+  {
+    "status": "invited",
+    "email": "salas.terry@gology.me",
+    "lastName": "Terry",
+    "firstName": "Salas",
+    "locale": "ru",
+    "_id": 9
+  }
+]
